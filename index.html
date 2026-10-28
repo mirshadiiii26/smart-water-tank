@@ -109,5 +109,17 @@
     Smart Water Tank IoT Project<br>
     Demo interface only. Live data connection is not configured.
   </footer>
+  <script>
+const API_URL = "https://smart-water-tank-api.mirshad-iiii26.workers.dev/";
+
+fetch(API_URL)
+  .then(response => response.json())
+  .then(data => {
+    console.log("Smart Water Tank data:", data);
+  })
+  .catch(error => {
+    console.error("Connection error:", error);
+  });
+</script>
 </body>
 </html>
