@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Water Tank Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f5fc;
+      color: #17324d;
+      margin: 0;
+      padding: 20px;
+    }
+    header {
+      background: #123456;
+      color: white;
+      padding: 22px;
+      border-radius: 14px;
+      text-align: center;
+    }
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px #00000012;
+    }
+    .value {
+      font-size: 28px;
+      font-weight: bold;
+      color: #1877df;
+    }
+    .note {
+      color: #687b90;
+      font-size: 13px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 28px;
+      color: #687b90;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💧 Smart Water Tank System</h1>
+    <p>IoT Monitoring Dashboard</p>
+    <p id="connection">Demo Mode — Not Connected</p>
+  </header>
+
+  <main class="dashboard">
+    <section class="card">
+      <h2>Water Level</h2>
+      <p class="value">--%</p>
+      <p class="note">Waiting for live sensor data</p>
+    </section>
+
+    <section class="card">
+      <h2>Sensor Distance</h2>
+      <p class="value">-- cm</p>
+      <p class="note">Ultrasonic sensor · V0</p>
+    </section>
+
+    <section class="card">
+      <h2>Pump Status</h2>
+      <p class="value">OFF</p>
+      <p class="note">Status · V1</p>
+    </section>
+
+    <section class="card">
+      <h2>Water Status</h2>
+      <p class="value">Unknown</p>
+      <p class="note">Blynk datastream · V2</p>
+    </section>
+
+    <section class="card">
+      <h2>LOW Float Switch</h2>
+      <p class="value">Unknown</p>
+      <p class="note">Blynk datastream · V3</p>
+    </section>
+
+    <section class="card">
+      <h2>HIGH Float Switch</h2>
+      <p class="value">Unknown</p>
+      <p class="note">Blynk datastream · V4</p>
+    </section>
+
+    <section class="card">
+      <h2>Automatic Mode</h2>
+      <p class="value">Unknown</p>
+      <p class="note">Blynk datastream · V5</p>
+    </section>
+
+    <section class="card">
+      <h2>Controller</h2>
+      <p class="value">ESP32</p>
+      <p class="note">Cloud platform: Blynk IoT</p>
+    </section>
+  </main>
+
+  <footer>
+    Smart Water Tank IoT Project<br>
+    Demo interface only. Live data connection is not configured.
+  </footer>
+</body>
+</html>
