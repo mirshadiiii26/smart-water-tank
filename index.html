@@ -58,7 +58,7 @@
   <main class="dashboard">
     <section class="card">
       <h2>Water Level</h2>
-      <p class="value">--%</p>
+      <p class="value" id="waterLevel">--%</p>
       <p class="note">Waiting for live sensor data</p>
     </section>
 
@@ -113,13 +113,36 @@
 const API_URL = "https://smart-water-tank-api.mirshad-iiii26.workers.dev/api/status";
 
 fetch(API_URL)
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("API connection failed");
+    }
+    return response.json();
+  })
   .then(data => {
     console.log("Smart Water Tank data:", data);
+
+    // Water level calculation using 16 cm tank height
+    const distance = Number(data.distanceCm);
+    const waterLevelElement = document.getElementById("waterLevel");
+
+    if (
+      waterLevelElement &&
+      Number.isFinite(distance) &&
+      distance > 0 &&
+      distance <= 16
+    ) {
+      const percentage = Math.round(((16 - distance) / 16) * 100);
+      waterLevelElement.textContent = percentage + "%";
+    } else if (waterLevelElement) {
+      waterLevelElement.textContent = "--%";
+    }
   })
   .catch(error => {
     console.error("Connection error:", error);
+    document.getElementById("waterLevel").textContent = "--%";
   });
+  
 </script>
 </body>
 </html>
